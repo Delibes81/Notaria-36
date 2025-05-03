@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   return (
     <header 
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-6'
+        isScrolled || mobileMenuOpen ? 'bg-white shadow-md py-2' : 'bg-transparent py-6'
       }`}
     >
       <Container>
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
                   <a 
                     href={item.href}
                     className={`text-sm font-medium transition-colors hover:text-primary-700 ${
-                      isScrolled ? 'text-primary-900' : 'text-white'
+                      isScrolled || mobileMenuOpen ? 'text-primary-900' : 'text-white'
                     }`}
                   >
                     {item.label}
@@ -53,7 +53,7 @@ const Header: React.FC = () => {
 
           <div className="hidden items-center space-x-4 md:flex">
             <a href="#" className={`flex items-center text-sm font-medium transition-colors hover:text-primary-700 ${
-              isScrolled ? 'text-primary-900' : 'text-white'
+              isScrolled || mobileMenuOpen ? 'text-primary-900' : 'text-white'
             }`}>
               <Globe className="mr-1 h-4 w-4" />
               <span>EN</span>
@@ -70,9 +70,9 @@ const Header: React.FC = () => {
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <X className={`h-6 w-6 ${isScrolled ? 'text-primary-900' : 'text-white'}`} />
+              <X className={`h-6 w-6 ${isScrolled || mobileMenuOpen ? 'text-primary-900' : 'text-white'}`} />
             ) : (
-              <Menu className={`h-6 w-6 ${isScrolled ? 'text-primary-900' : 'text-white'}`} />
+              <Menu className={`h-6 w-6 ${isScrolled || mobileMenuOpen ? 'text-primary-900' : 'text-white'}`} />
             )}
           </button>
         </div>
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
 
       {/* Mobile navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden bg-white">
           <Container>
             <nav className="mt-4 pb-6">
               <ul className="flex flex-col space-y-4">
